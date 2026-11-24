@@ -1,0 +1,126 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --canvas: #f4f5f8;
+  --surface: #ffffff;
+  --surface-muted: #f7f8fb;
+  --ink: #12141c;
+  --muted: #5c6373;
+  --faint: #8b91a1;
+  --line: #e6e8f0;
+  --brand: #4f46e5;
+  --brand-strong: #4338ca;
+  --brand-soft: #eef0ff;
+  --violet: #6d28d9;
+  --success: #0f766e;
+  --success-soft: #e7f6f3;
+  --warning: #b45309;
+  --warning-soft: #fbf1e4;
+  --danger: #be123c;
+  --danger-soft: #fde8ee;
+  --shadow-card: 0 1px 2px rgba(18, 20, 28, 0.04), 0 12px 32px rgba(18, 20, 28, 0.05);
+  --shadow-pop: 0 16px 40px rgba(18, 20, 28, 0.12);
+}
+
+.dark {
+  color-scheme: dark;
+  --canvas: #090a0e;
+  --surface: #13151c;
+  --surface-muted: #1a1d27;
+  --ink: #f4f6fb;
+  --muted: #a7adbb;
+  --faint: #7e8596;
+  --line: #2a2e3a;
+  --brand: #818cf8;
+  --brand-strong: #a5b4fc;
+  --brand-soft: rgba(129, 140, 248, 0.14);
+  --violet: #c4b5fd;
+  --success: #5eead4;
+  --success-soft: rgba(15, 118, 110, 0.22);
+  --warning: #fbbf24;
+  --warning-soft: rgba(180, 83, 9, 0.22);
+  --danger: #fb7185;
+  --danger-soft: rgba(190, 18, 60, 0.22);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.28);
+  --shadow-pop: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+@theme inline {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-violet: var(--violet);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --shadow-card: var(--shadow-card);
+  --shadow-pop: var(--shadow-pop);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand) 28%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes page-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.page-enter {
+  animation: page-rise 0.28s ease;
+}
